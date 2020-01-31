@@ -78,4 +78,5 @@ format_edge({Edge, V1, V2, Label}, Ids, Indent) ->
 
 
 format_id(Id) when is_binary(Id) -> binary_to_list(Id);
+format_id(Id) when is_bitstring(Id) -> bitstring_to_list(Id);
 format_id(Id) -> Id.
