@@ -68,10 +68,14 @@ edges(Graph) ->
 format_vertex({V, Label}, Ids, Indent) ->
     #{V := Id} = Ids,
     io_lib:format("~ts~ts [id=~ts, label=~ts];~n",
-                  [Indent, Id, quoted(V), quoted(Label)]).
+                  [Indent, format_id(Id), quoted(V), quoted(Label)]).
 
 format_edge({Edge, V1, V2, Label}, Ids, Indent) ->
     #{V1 := Id1} = Ids,
     #{V2 := Id2} = Ids,
     io_lib:format("~ts~ts -> ~ts [id=~ts, label=~ts];~n",
                   [Indent, Id1, Id2, quoted(Edge), quoted(Label)]).
+
+
+format_id(Id) when is_binary(Id) -> binary_to_list(Id);
+format_id(Id) -> Id.
