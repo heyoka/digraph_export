@@ -68,7 +68,7 @@ edges(Graph) ->
 format_vertex({V, Label}, Ids, Indent) ->
     #{V := Id} = Ids,
     io_lib:format("~ts~ts [id=~ts, label=~ts];~n",
-                  [Indent, format_id(Id), quoted(V), quoted(Label)]).
+                  [Indent, format_id(Id), format_id(quoted(V)), quoted(Label)]).
 
 format_edge({Edge, V1, V2, Label}, Ids, Indent) ->
     #{V1 := Id1} = Ids,
