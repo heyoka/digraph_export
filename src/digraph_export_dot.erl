@@ -65,10 +65,10 @@ vertices(Graph) ->
 edges(Graph) ->
     [digraph:edge(Graph, E) || E <- digraph:edges(Graph)].
 
-format_vertex({V, Label}, Ids, Indent) ->
+format_vertex({V, _Label}, Ids, Indent) ->
     #{V := Id} = Ids,
     io_lib:format("~ts~ts [id=~ts, label=~ts];~n",
-                  [Indent, format_id(Id), format_id(quoted(V)), quoted(Label)]).
+                  [Indent, format_id(Id), format_id(quoted(V)), format_id(quoted(V))]).
 
 format_edge({Edge, V1, V2, Label}, Ids, Indent) ->
     #{V1 := Id1} = Ids,
